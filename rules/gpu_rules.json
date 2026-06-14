@@ -1,0 +1,284 @@
+{
+  "schema_version": "1.7",
+  "description": "Perfectly calibrated GPU rules for post-normalized text stream",
+  "rules": [
+    {
+      "brand": "Qualcomm",
+      "family": "Adreno",
+      "series": "Adreno",
+      "default_type": "Integrated",
+      "has_vram": false,
+      "model_pattern": "(adreno\\s*\\d{3,4})",
+      "patterns": [
+        "qualcomm.*adreno",
+        "adreno\\s*\\d{3,4}"
+      ]
+    },
+    {
+      "brand": "Nvidia",
+      "family": "GeForce",
+      "series": "RTX 40-Series",
+      "default_type": "Dedicated",
+      "has_vram": true,
+      "model_pattern": "(40\\d{2}\\s*(?:ti|super)?)",
+      "patterns": [
+        "rtx\\s*40\\d{2}",
+        "geforce\\s*rtx\\s*40\\d{2}"
+      ]
+    },
+    {
+      "brand": "Nvidia",
+      "family": "GeForce",
+      "series": "RTX 30-Series",
+      "default_type": "Dedicated",
+      "has_vram": true,
+      "model_pattern": "(30\\d{2}\\s*(?:ti)?)",
+      "patterns": [
+        "rtx\\s*30\\d{2}",
+        "geforce\\s*rtx\\s*30\\d{2}"
+      ]
+    },
+    {
+      "brand": "Nvidia",
+      "family": "GeForce",
+      "series": "RTX 20-Series",
+      "default_type": "Dedicated",
+      "has_vram": true,
+      "model_pattern": "(20\\d{2}\\s*(?:ti)?)",
+      "patterns": [
+        "rtx\\s*20\\d{2}",
+        "geforce\\s*rtx\\s*20\\d{2}"
+      ]
+    },
+    {
+      "brand": "Nvidia",
+      "family": "GeForce",
+      "series": "GTX Series",
+      "default_type": "Dedicated",
+      "has_vram": true,
+      "model_pattern": "(16\\d{2}\\s*(?:ti)?|10\\d{2}\\s*(?:ti)?)",
+      "patterns": [
+        "gtx\\s*16\\d{2}",
+        "gtx\\s*10\\d{2}",
+        "geforce\\s*gtx"
+      ]
+    },
+    {
+      "brand": "Nvidia",
+      "family": "GeForce",
+      "series": "MX Series",
+      "default_type": "Dedicated",
+      "has_vram": true,
+      "model_pattern": "(mx\\s*\\d{3})",
+      "patterns": [
+        "mx\\d{3}",
+        "mx\\s*\\d{3}"
+      ]
+    },
+    {
+      "brand": "Intel",
+      "family": "Iris",
+      "series": "Iris Graphics",
+      "default_type": "Integrated",
+      "has_vram": false,
+      "model_pattern": "(iris\\s*(?:xe|plus|pro|graphics)?)",
+      "patterns": [
+        "intel\\s*iris",
+        "intel\\s*iris\\s*plus",
+        "iris",
+        "آیریس"
+      ]
+    },
+    {
+      "brand": "Intel",
+      "family": "UHD Graphics",
+      "series": "Intel UHD / HD",
+      "default_type": "Integrated",
+      "has_vram": false,
+      "model_pattern": "((?:uhd|hd)\\s*(?:graphics)?\\s*\\d{0,3})",
+      "patterns": [
+        "intel\\s*uhd",
+        "intel\\s*hd",
+        "uhd\\s*graphics",
+        "hd\\s*graphics",
+        "uhd\\d{3}",
+        "hd\\d{3}"
+      ]
+    },
+    {
+      "brand": "AMD",
+      "family": "Radeon",
+      "series": "Radeon Integrated",
+      "default_type": "Integrated",
+      "has_vram": false,
+      "model_pattern": "(radeon\\s*(?:graphics|vega)?)",
+      "patterns": [
+        "amd\\s*radeon",
+        "radeon\\s*graphics",
+        "radeon\\s*vega",
+        "رادئون",
+        "رادون"
+      ]
+    },
+    {
+      "brand": "Apple",
+      "family": "Apple Silicon",
+      "series": "M-Series GPU",
+      "default_type": "Integrated",
+      "has_vram": false,
+      "model_pattern": "((?:m1|m2|m3)\\s*(?:pro|max|ultra)?)",
+      "patterns": [
+        "apple\\s*silicon",
+        "\\bm1\\b",
+        "\\bm2\\b",
+        "\\bm3\\b"
+      ]
+    },
+    {
+      "brand": "Intel",
+      "family": "Shared",
+      "series": "Generic Integrated",
+      "default_type": "Integrated",
+      "has_vram": false,
+      "model_pattern": "(integrated|shared|onboard)",
+      "patterns": [
+        "onboard",
+        "shared",
+        "integrated",
+        "آنبورد",
+        "اشتراکی"
+      ]
+    },
+    {
+      "brand": "Nvidia",
+      "family": "Quadro / Workstation",
+      "series": "Nvidia Professional",
+      "default_type": "Dedicated",
+      "has_vram": true,
+      "model_pattern": "((?:rtx\\s*a|quadro\\s*|t|k|m)\\d{3,4}[m|x]?\\s*(?:max\\s*q)?)",
+      "patterns": [
+        "quadro",
+        "rtx\\s*a\\d{3,4}",
+        "\\bt\\d{3,4}\\b",
+        "\\bk\\d{3,4}\\b",
+        "\\bm\\d{3,4}\\b",
+        "\\ba\\d{3,4}\\b"
+      ]
+    },
+    {
+      "brand": "AMD",
+      "family": "Radeon Pro",
+      "series": "Radeon Pro / FirePro",
+      "default_type": "Dedicated",
+      "has_vram": true,
+      "model_pattern": "(pro\\s*\\d{4}[m]?|fire\\s*pro\\s*[a-zA-Z]?\\d{3,4})",
+      "patterns": [
+        "radeon\\s*pro",
+        "fire\\s*pro"
+      ]
+    },
+    {
+      "brand": "Intel",
+      "family": "Arc",
+      "series": "Intel Arc Graphics",
+      "default_type": "Integrated",
+      "has_vram": false,
+      "model_pattern": "(arc\\s*[a-zA-Z]?\\d{3})",
+      "patterns": [
+        "arc"
+      ]
+    },
+    {
+      "brand": "Nvidia",
+      "family": "GeForce",
+      "series": "Legacy Series",
+      "default_type": "Dedicated",
+      "has_vram": true,
+      "model_pattern": "(\\d{3}mx|gtx\\s*\\d{3}[m]?)",
+      "patterns": [
+        "\\d{3}mx",
+        "gtx\\s*9\\d{2}"
+      ]
+    },
+    {
+      "brand": "AMD",
+      "family": "Radeon",
+      "series": "Radeon RX Vega",
+      "default_type": "Dedicated",
+      "has_vram": true,
+      "model_pattern": "(rx\\s*vega\\s*\\d{1,2})",
+      "patterns": [
+        "radeon\\s*rx\\s*vega\\s*\\d{1,2}",
+        "rx\\s*vega\\s*\\d{1,2}"
+      ]
+    },
+    {
+      "brand": "AMD",
+      "family": "Radeon",
+      "series": "Radeon Vega",
+      "default_type": "Integrated",
+      "has_vram": false,
+      "model_pattern": "(vega\\s*\\d{1,2})",
+      "patterns": [
+        "vega"
+      ]
+    },
+    {
+      "brand": "Intel",
+      "family": "Shared",
+      "series": "Intel NPU / Generic",
+      "default_type": "Integrated",
+      "has_vram": false,
+      "model_pattern": "(intel\\s*vs\\s*npu|intel)",
+      "patterns": [
+        "intel\\s*vs\\s*npu"
+      ]
+    },
+    {
+      "brand": "Nvidia",
+      "family": "GeForce",
+      "series": "GeForce Generic",
+      "default_type": "Dedicated",
+      "has_vram": true,
+      "model_pattern": null,
+      "patterns": [
+        "(?:nvidia[®\\s]*)?geforce(?!\\s*(?:rtx|gtx))"
+      ]
+    },
+    {
+      "brand": "Nvidia",
+      "family": "GeForce",
+      "series": "Nvidia Generic",
+      "default_type": "Dedicated",
+      "has_vram": true,
+      "model_pattern": null,
+      "patterns": [
+        "\\bnvidia\\b"
+      ]
+    },
+    {
+      "brand": "Unknown",
+      "family": "Dedicated",
+      "series": "Dedicated Generic",
+      "default_type": "Dedicated",
+      "has_vram": true,
+      "model_pattern": null,
+      "patterns": [
+        "dedicated\\s*graphics",
+        "dedicated\\s*gpu"
+      ]
+    },
+    {
+      "brand": "AMD",
+      "family": "Radeon",
+      "series": "Generic AMD",
+      "default_type": "Integrated",
+      "has_vram": false,
+      "model_pattern": "(amd\\s*graphic|r5|r7|\\d{3})",
+      "patterns": [
+        "amd\\s*graphic",
+        "\\bamd\\b"
+      ]
+    }
+  ]
+}

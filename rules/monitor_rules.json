@@ -1,0 +1,92 @@
+{
+  "schema_version": "1.1",
+  "description": "Monitor parsing rules for laptop display column. Applied after normalization (lowercase, english digits, stripped, collapsed whitespace).",
+
+  "output_fields": ["screen_size", "resolution", "refresh_rate", "panel_type", "is_touch"],
+
+  "special_values": [
+    {
+      "raw_patterns": ["نامشخص", "^–$", "^$"],
+      "action": "set_all_null"
+    }
+  ],
+
+  "rules": [
+    {
+      "field": "screen_size",
+      "description": "Physical screen size in inches extracted from text",
+      "output_type": "float",
+      "patterns": [
+        "(\\d+\\.?\\d*)\\s*(?:inch|اینچ|in\\b)",
+        "(?:^|\\s)(1[0-9](?:\\.\\d+)?)(?:\\s|$)"
+      ],
+      "fallback": null,
+      "note": "Pattern 1: explicit unit (inch/اینچ). Pattern 2: bare number in valid laptop screen range (10–19.x inches) — handles sources that omit the unit."
+    },
+
+    {
+      "field": "resolution",
+      "description": "Normalized resolution label — single canonical label for analysis",
+      "output_type": "string",
+      "patterns": [
+        { "match": "3840\\s*[x×]\\s*2400",               "label": "4K"   },
+        { "match": "2736\\s*[x×]\\s*1824",               "label": "QHD+" },
+        { "match": "256[0-9]\\s*[x×]\\s*1[56][0-9]{2}",  "label": "QHD"  },
+        { "match": "2496\\s*[x×]\\s*1664",               "label": "QHD"  },
+        { "match": "2256\\s*[x×]\\s*1504",               "label": "QHD"  },
+        { "match": "5\\s*k|5k",                  "label": "5K"  },
+        { "match": "4\\s*k|4k",                  "label": "4K"  },
+        { "match": "3\\s*k|3k",                  "label": "3K"  },
+        { "match": "2\\s*k|2k|qhd",              "label": "QHD" },
+        { "match": "fhd\\+|full\\s*hd\\+",       "label": "FHD+" },
+        { "match": "fhd|full\\s*hd|pixelsense",  "label": "FHD" },
+        { "match": "hd\\+",                       "label": "HD+" },
+        { "match": "retina",                      "label": "Retina" },
+        { "match": "\\bhd\\b|hd[\\-,\\.\\s]",    "label": "HD"  }
+      ],
+      "fallback": null,
+      "note": "Pattern order matters — match from most specific to least. 'fhd-hd' ambiguous → prefer FHD since it appears first."
+    },
+
+    {
+      "field": "refresh_rate",
+      "description": "Screen refresh rate in Hz",
+      "output_type": "integer",
+      "patterns": [
+        "(\\d{2,3})\\s*hz"
+      ],
+      "fallback": 60,
+      "note": "Default 60 when not stated — keeps field numeric and comparable across all rows"
+    },
+
+    {
+      "field": "panel_type",
+      "description": "Display panel technology — only when explicitly mentioned in raw text",
+      "output_type": "string",
+      "patterns": [
+        { "match": "\\bips\\b",  "label": "IPS"  },
+        { "match": "\\boled\\b", "label": "OLED" },
+        { "match": "\\bva\\b",   "label": "VA"   },
+        { "match": "\\btn\\b",   "label": "TN"   }
+      ],
+      "fallback": null,
+      "note": "Retina and PixelSense do NOT imply a panel_type — leave null unless IPS/OLED is explicitly present"
+    },
+
+    {
+      "field": "is_touch",
+      "description": "Whether the screen supports touch input",
+      "output_type": "boolean",
+      "patterns": [
+        "\\btouch\\b",
+        "\\btuoch\\b",
+        "\\b2in1\\b",
+        "\\bx360\\b",
+        "\\btablet\\b",
+        "touchpad"
+      ],
+      "fallback": false,
+      "note": "'tuoch' is a recurring typo of 'touch' in this dataset"
+    }
+  ]
+}

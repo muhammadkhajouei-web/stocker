@@ -1,0 +1,70 @@
+{
+  "schema_version": "1.0",
+  "description": "Brand name mapping — Persian variants and non-standard spellings to canonical English",
+  "brands": [
+    {
+      "canonical": "HP",
+      "variants": ["hp", "اچ پی", "اچپی", "h.p", "h p", "hewlett packard", "hewlett-packard"]
+    },
+    {
+      "canonical": "Dell",
+      "variants": ["dell", "DELL", "دل", "دِل"]
+    },
+    {
+      "canonical": "Lenovo",
+      "variants": ["lenovo", "لنوو", "لنووو", "لنو", "لنووو"]
+    },
+    {
+      "canonical": "Apple",
+      "variants": ["apple", "اپل", "آپل", "اَپل"]
+    },
+    {
+      "canonical": "ASUS",
+      "variants": ["asus", "ایسوس", "آسوس", "ایسوز"]
+    },
+    {
+      "canonical": "Acer",
+      "variants": ["acer", "ایسر", "آیسر", "ایسِر"]
+    },
+    {
+      "canonical": "MSI",
+      "variants": ["msi", "ام اس آی", "ام‌اس‌آی", "امیسی"]
+    },
+    {
+      "canonical": "Microsoft",
+      "variants": ["microsoft", "مایکروسافت", "مایکروسافت", "مایکروسافت", "surface", "SURFACE"]
+    },
+    {
+      "canonical": "Samsung",
+      "variants": ["samsung", "SAMSUNG", "سامسونگ", "سامسونک"]
+    },
+    {
+      "canonical": "Toshiba",
+      "variants": ["toshiba", "توشیبا", "تاشیبا"]
+    },
+    {
+      "canonical": "Sony",
+      "variants": ["sony", "سونی"]
+    },
+    {
+      "canonical": "LG",
+      "variants": ["lg", "ال جی", "ال‌جی", "ال‌جی"]
+    },
+    {
+      "canonical": "Huawei",
+      "variants": ["huawei", "هواوی", "هوآوی", "هواوئی"]
+    },
+    {
+      "canonical": "Xiaomi",
+      "variants": ["xiaomi", "شیائومی", "شیاومی", "شیائومی"]
+    },
+    {
+      "canonical": "Razer",
+      "variants": ["razer", "ریزر", "ریزِر"]
+    },
+    {
+      "canonical": "Alienware",
+      "variants": ["alienware", "الینویر", "الیین ویر"]
+    }
+  ]
+}

@@ -1,0 +1,506 @@
+{
+  "schema_version": "1.3",
+  "description": "CPU parsing rules optimized for integer generation and standard string construction",
+  "rules": [
+    {
+      "brand": "Intel",
+      "family": "Core",
+      "series": "i3",
+      "class": "entry",
+      "model_pattern": "(\\d{2,5}[A-Z0-9]*)",
+      "patterns": [
+        "(?:intel\\s*)?(?:core\\s*)?i3[-–—_\\s]+(\\d{4,5}[a-zA-Z0-9]*)",
+        "(?:intel\\s*)?(?:core\\s*)?i3"
+      ],
+      "generation_method": "intel_core"
+    },
+    {
+      "brand": "Intel",
+      "family": "Core",
+      "series": "i5",
+      "class": "mainstream",
+      "model_pattern": "(\\d{2,5}[A-Z0-9]*)",
+      "patterns": [
+        "(?:intel\\s*)?(?:core\\s*)?i5[-–—_\\s]+(\\d{4,5}[a-zA-Z0-9]*)",
+        "(?:intel\\s*)?(?:core\\s*)?i5[-–—_\\s]+(\\d{1,2})g\\d",
+        "(?:intel\\s*)?(?:core\\s*)?i5[-–—_\\s]+(\\d{2}[a-zA-Z]+)",
+        "(?:intel\\s*)?(?:core\\s*)?i5"
+      ],
+      "generation_method": "intel_core"
+    },
+    {
+      "brand": "Intel",
+      "family": "Core",
+      "series": "i7",
+      "class": "high_performance",
+      "model_pattern": "(\\d{4,5}[a-zA-Z0-9]*)",
+      "patterns": [
+        "\\b(8550[a-zA-Z]*)\\b",
+        "\\b(8\\d{3}[a-zA-Z]+)\\b"
+      ],
+      "generation_method": "intel_core",
+      "note": "Handles bare model numbers like 8550U without i7 prefix"
+    },
+    {
+      "brand": "Intel",
+      "family": "Core",
+      "series": "i7",
+      "class": "high_performance",
+      "model_pattern": "(\\d{2,5}[A-Z0-9]*)",
+      "patterns": [
+        "(?:intel\\s*)?(?:core\\s*)?i7[-–—_\\s]+(\\d{4,5}[a-zA-Z0-9]*)",
+        "(?:intel\\s*)?(?:core\\s*)?i7[-–—_\\s]+(\\d{1,2})g\\d",
+        "(?:intel\\s*)?(?:core\\s*)?i7"
+      ],
+      "generation_method": "intel_core"
+    },
+    {
+      "brand": "Intel",
+      "family": "Core",
+      "series": "i9",
+      "class": "enthusiast",
+      "model_pattern": "(\\d{2,5}[A-Z0-9]*)",
+      "patterns": [
+        "(?:intel\\s*)?(?:core\\s*)?i9[-–—_\\s]+(\\d{4,5}[a-zA-Z0-9]*)",
+        "(?:intel\\s*)?(?:core\\s*)?i9"
+      ],
+      "generation_method": "intel_core"
+    },
+    {
+      "brand": "Intel",
+      "family": "Core Ultra",
+      "series": "Ultra 5",
+      "class": "mainstream",
+      "model_pattern": "(\\d{2,5}[A-Z0-9]*)",
+      "patterns": [
+        "(?:intel\\s*)?(?:core\\s*)?ultra\\s*5[-–—_\\s]+(\\d{3,4}[a-zA-Z]*)",
+        "(\\d{3,4}[a-zA-Z]*)\\s*ultra\\s*5"
+      ],
+      "generation_method": "intel_ultra"
+    },
+    {
+      "brand": "Intel",
+      "family": "Core Ultra",
+      "series": "Ultra 7",
+      "class": "high_performance",
+      "model_pattern": "(\\d{2,5}[A-Z0-9]*)",
+      "patterns": [
+        "(?:intel\\s*)?(?:core\\s*)?ultra\\s*7[-–—_\\s]+(\\d{3,4}[a-zA-Z]*)",
+        "(\\d{3,4}[a-zA-Z]*)\\s*ultra\\s*7"
+      ],
+      "generation_method": "intel_ultra"
+    },
+    {
+      "brand": "Intel",
+      "family": "Core Ultra",
+      "series": "Ultra 9",
+      "class": "enthusiast",
+      "model_pattern": "(\\d{2,5}[A-Z0-9]*)",
+      "patterns": [
+        "(?:intel\\s*)?(?:core\\s*)?ultra\\s*9[-–—_\\s]+(\\d{3,4}[a-zA-Z]*)",
+        "(\\d{3,4}[a-zA-Z]*)\\s*ultra\\s*9"
+      ],
+      "generation_method": "intel_ultra"
+    },
+    {
+      "brand": "Intel",
+      "family": "Core",
+      "series": "Core 3",
+      "class": "entry",
+      "model_pattern": "(\\d{3,5}[a-zA-Z0-9]*)",
+      "patterns": [
+        "(?:intel\\s*)?core\\s*3[-–—_\\s]+(\\d{3,5}[a-zA-Z0-9]*)",
+        "(?:intel\\s*)?core\\s*3"
+      ],
+      "generation_method": "intel_core"
+    },
+    {
+      "brand": "Intel",
+      "family": "Core",
+      "series": "Core 5",
+      "class": "mainstream",
+      "model_pattern": "(\\d{3,5}[a-zA-Z0-9]*)",
+      "patterns": [
+        "(?:intel\\s*)?core\\s*5[-–—_\\s]+(\\d{3,5}[a-zA-Z0-9]*)",
+        "(?:intel\\s*)?core\\s*5"
+      ],
+      "generation_method": "intel_core"
+    },
+    {
+      "brand": "Intel",
+      "family": "Core",
+      "series": "Core 7",
+      "class": "high_performance",
+      "model_pattern": "(\\d{3,5}[a-zA-Z0-9]*)",
+      "patterns": [
+        "(?:intel\\s*)?core\\s*7[-–—_\\s]+(\\d{3,5}[a-zA-Z0-9]*)",
+        "(?:intel\\s*)?core\\s*7"
+      ],
+      "generation_method": "intel_core"
+    },
+    {
+      "brand": "Intel",
+      "family": "Xeon",
+      "series": "Xeon E",
+      "class": "workstation",
+      "model_pattern": "(\\d{3,5}\\w*)",
+      "patterns": [
+        "xeon\\s+e[-\\s](\\d{3,4}\\w*)",
+        "xeon\\s+e(\\d{3,4}\\w*)"
+      ],
+      "generation_method": "prefix_map",
+      "generation_map": [
+        {
+          "prefix": "24",
+          "generation": 12
+        },
+        {
+          "prefix": "23",
+          "generation": 11
+        },
+        {
+          "prefix": "22",
+          "generation": 10
+        },
+        {
+          "prefix": "21",
+          "generation": 9
+        },
+        {
+          "prefix": "20",
+          "generation": 9
+        },
+        {
+          "prefix": "15",
+          "generation": 1
+        }
+      ]
+    },
+    {
+      "brand": "Intel",
+      "family": "Xeon",
+      "series": "Xeon W",
+      "class": "workstation",
+      "model_pattern": "(\\d{3,5}\\w*)",
+      "patterns": [
+        "xeon\\s+w[-\\s](\\d{3,4}\\w*)",
+        "xeon\\s+w(\\d{3,4}\\w*)"
+      ],
+      "generation_method": "prefix_map",
+      "generation_map": [
+        {
+          "prefix": "34",
+          "generation": 13
+        },
+        {
+          "prefix": "33",
+          "generation": 13
+        },
+        {
+          "prefix": "24",
+          "generation": 12
+        },
+        {
+          "prefix": "23",
+          "generation": 11
+        },
+        {
+          "prefix": "119",
+          "generation": 11
+        },
+        {
+          "prefix": "118",
+          "generation": 11
+        },
+        {
+          "prefix": "108",
+          "generation": 10
+        }
+      ]
+    },
+    {
+      "brand": "Intel",
+      "family": "Xeon",
+      "series": "Xeon",
+      "class": "workstation",
+      "model_pattern": "(\\d{4,5}\\w*)",
+      "patterns": [
+        "xeon\\s+(\\d{4,5}\\w*)"
+      ],
+      "generation_method": "prefix_map",
+      "generation_map": [
+        {
+          "prefix": "119",
+          "generation": 11
+        },
+        {
+          "prefix": "105",
+          "generation": 10
+        },
+        {
+          "prefix": "227",
+          "generation": 10
+        },
+        {
+          "prefix": "217",
+          "generation": 10
+        }
+      ]
+    },
+    {
+      "brand": "Intel",
+      "family": "Pentium",
+      "series": "Pentium",
+      "class": "entry",
+      "model_pattern": "(\\d{2,5}[A-Z0-9]*)",
+      "patterns": [
+        "(?:intel\\s*)?pentium\\s*(?:gold|silver)?[-–—_\\s]+([a-z]?\\d{3,4}[a-zA-Z]*)",
+        "(?:intel\\s*)?pentium"
+      ],
+      "generation_method": "unknown"
+    },
+    {
+      "brand": "Intel",
+      "family": "Processor",
+      "series": "N100",
+      "class": "entry",
+      "model_pattern": "(\\d{2,5}[A-Z0-9]*)",
+      "patterns": [
+        "(?:intel\\s*(?:inside)?)?\\s*(n100)"
+      ],
+      "generation_method": "fixed"
+    },
+    {
+      "brand": "Intel",
+      "family": "Celeron",
+      "series": "Celeron",
+      "class": "budget",
+      "model_pattern": "(\\d{2,5}[A-Z0-9]*)",
+      "patterns": [
+        "(?:intel\\s*)?celeron[-–—_\\s]+([a-z]?\\d{3,4}[a-zA-Z]*)?",
+        "(?:intel\\s*)?celeron"
+      ],
+      "generation_method": "unknown"
+    },
+    {
+      "brand": "Qualcomm",
+      "family": "Snapdragon X",
+      "series": "X2 Elite Extreme",
+      "class": "enthusiast",
+      "model_pattern": "(x2\\s*elite\\s*extreme)",
+      "patterns": [
+        "(?:qualcomm\\s*)?snapdragon\\s+x2\\s+elite\\s+extreme"
+      ],
+      "generation_method": "snapdragon"
+    },
+    {
+      "brand": "Qualcomm",
+      "family": "Snapdragon X",
+      "series": "X2 Elite",
+      "class": "high_performance",
+      "model_pattern": "(x2\\s*elite)",
+      "patterns": [
+        "(?:qualcomm\\s*)?snapdragon\\s+x2\\s+elite(?!\\s+extreme)"
+      ],
+      "generation_method": "snapdragon"
+    },
+    {
+      "brand": "Qualcomm",
+      "family": "Snapdragon X",
+      "series": "X2 Plus",
+      "class": "mainstream",
+      "model_pattern": "(x2\\s*plus)",
+      "patterns": [
+        "(?:qualcomm\\s*)?snapdragon\\s+x2\\s+plus"
+      ],
+      "generation_method": "snapdragon"
+    },
+    {
+      "brand": "Qualcomm",
+      "family": "Snapdragon X",
+      "series": "X Elite",
+      "class": "high_performance",
+      "model_pattern": "(x\\s*elite)",
+      "patterns": [
+        "(?:qualcomm\\s*)?snapdragon\\s+x\\s+elite"
+      ],
+      "generation_method": "snapdragon"
+    },
+    {
+      "brand": "Qualcomm",
+      "family": "Snapdragon X",
+      "series": "X Plus",
+      "class": "mainstream",
+      "model_pattern": "(x\\s*plus)",
+      "patterns": [
+        "(?:qualcomm\\s*)?snapdragon\\s+x\\s+plus"
+      ],
+      "generation_method": "snapdragon"
+    },
+    {
+      "brand": "Qualcomm",
+      "family": "Snapdragon X",
+      "series": "X",
+      "class": "entry",
+      "model_pattern": "(\\bx\\b)",
+      "patterns": [
+        "(?:qualcomm\\s*)?snapdragon\\s+x\\b(?!\\s*(?:elite|plus|\\d))"
+      ],
+      "generation_method": "snapdragon"
+    },
+    {
+      "brand": "Qualcomm",
+      "family": "Snapdragon",
+      "series": "8cx",
+      "class": "high_performance",
+      "model_pattern": "(8cx(?:\\s+gen\\s*\\d)?)",
+      "patterns": [
+        "(?:qualcomm\\s*)?snapdragon\\s+8cx(?:\\s+gen\\s*\\d)?"
+      ],
+      "generation_method": "snapdragon"
+    },
+    {
+      "brand": "Qualcomm",
+      "family": "Snapdragon",
+      "series": "7c",
+      "class": "mainstream",
+      "model_pattern": "(7c\\+?(?:\\s+gen\\s*\\d)?)",
+      "patterns": [
+        "(?:qualcomm\\s*)?snapdragon\\s+7c\\+?(?:\\s+gen\\s*\\d)?"
+      ],
+      "generation_method": "snapdragon"
+    },
+    {
+      "brand": "Qualcomm",
+      "family": "Snapdragon",
+      "series": "8c",
+      "class": "mainstream",
+      "model_pattern": "(8c(?:\\s+gen\\s*\\d)?)",
+      "patterns": [
+        "(?:qualcomm\\s*)?snapdragon\\s+8c(?!x)(?:\\s+gen\\s*\\d)?"
+      ],
+      "generation_method": "snapdragon"
+    },
+    {
+      "brand": "AMD",
+      "family": "Ryzen",
+      "series": "Ryzen 3",
+      "class": "entry",
+      "model_pattern": "(\\d{2,5}[A-Z0-9]*)",
+      "patterns": [
+        "(?:amd\\s*)?ryzen\\s*3(?:\\s*pro)?[-–—_\\s]+(\\d{4}[a-zA-Z]*)",
+        "r3[-–—_\\s]+(\\d{4}[a-zA-Z]*)",
+        "(?:amd\\s*)?ryzen\\s*3"
+      ],
+      "generation_method": "amd_ryzen"
+    },
+    {
+      "brand": "AMD",
+      "family": "Ryzen",
+      "series": "Ryzen 5",
+      "class": "mainstream",
+      "model_pattern": "(\\d{2,5}[A-Z0-9]*)",
+      "patterns": [
+        "(?:amd\\s*)?ryzen\\s*5(?:\\s*pro)?[-–—_\\s]+(\\d{3,4}[a-zA-Z]*)",
+        "r5[-–—\\s_]+(\\d{3,4}[a-zA-Z]*)",
+        "(?:amd\\s*)?ryzen\\s*5"
+      ],
+      "generation_method": "amd_ryzen"
+    },
+    {
+      "brand": "AMD",
+      "family": "Ryzen",
+      "series": "Ryzen 7",
+      "class": "high_performance",
+      "model_pattern": "(\\d{2,5}[A-Z0-9]*)",
+      "patterns": [
+        "(?:amd\\s*)?ryzen\\s*7(?:\\s*pro)?[-–—_\\s]+(\\d{4}[a-zA-Z]*)",
+        "r7[-–—_\\s]+(\\d{4}[a-zA-Z]*)",
+        "(?:amd\\s*)?ryzen\\s*7"
+      ],
+      "generation_method": "amd_ryzen"
+    },
+    {
+      "brand": "AMD",
+      "family": "Ryzen",
+      "series": "Ryzen 9",
+      "class": "enthusiast",
+      "model_pattern": "(\\d{2,5}[A-Z0-9]*)",
+      "patterns": [
+        "(?:amd\\s*)?ryzen\\s*9(?:\\s*pro)?[-–—_\\s]+(\\d{4}[a-zA-Z]*)",
+        "r9[-–—_\\s]+(\\d{4}[a-zA-Z]*)",
+        "(?:amd\\s*)?ryzen\\s*9"
+      ],
+      "generation_method": "amd_ryzen"
+    },
+    {
+      "brand": "AMD",
+      "family": "Athlon",
+      "series": "Athlon",
+      "class": "entry",
+      "model_pattern": "(\\d{2,5}[A-Z0-9]*)",
+      "patterns": [
+        "(?:amd\\s*)?athlon\\s*(?:silver|gold)?[-–—_\\s]+(\\d{4}[a-zA-Z]*)",
+        "(?:amd\\s*)?athlon"
+      ],
+      "generation_method": "unknown"
+    },
+    {
+      "brand": "AMD",
+      "family": "A-Series",
+      "series": "A8",
+      "class": "entry",
+      "model_pattern": "(\\d{2,5}[A-Z0-9]*)",
+      "patterns": [
+        "a8[-–—_\\s]+(\\d{4}[a-zA-Z]*)",
+        "a8"
+      ],
+      "generation_method": "fixed"
+    },
+    {
+      "brand": "AMD",
+      "family": "A-Series",
+      "series": "A10",
+      "class": "mainstream",
+      "model_pattern": "(\\d{2,5}[A-Z0-9]*)",
+      "patterns": [
+        "a10[-–—_\\s]+(\\d{4}[a-zA-Z]*)",
+        "a10"
+      ],
+      "generation_method": "fixed"
+    },
+    {
+      "brand": "Apple",
+      "family": "Apple Silicon",
+      "series": "M1",
+      "class": "soc",
+      "model_pattern": "(m1(?:\\s*(?:pro|max|ultra))?)",
+      "patterns": [
+        "(?:apple\\s*)?\\b(m1)\\b(?:[-–—_\\s]*(pro|max|ultra))?"
+      ],
+      "generation_method": "fixed"
+    },
+    {
+      "brand": "Apple",
+      "family": "Apple Silicon",
+      "series": "M2",
+      "class": "soc",
+      "model_pattern": "(m2(?:\\s*(?:pro|max|ultra))?)",
+      "patterns": [
+        "(?:apple\\s*)?\\b(m2)\\b(?:[-–—_\\s]*(pro|max|ultra))?"
+      ],
+      "generation_method": "fixed"
+    },
+    {
+      "brand": "Apple",
+      "family": "Apple Silicon",
+      "series": "M3",
+      "class": "soc",
+      "model_pattern": "(m3(?:\\s*(?:pro|max|ultra))?)",
+      "patterns": [
+        "(?:apple\\s*)?\\b(m3)\\b(?:[-–—_\\s]*(pro|max|ultra))?"
+      ],
+      "generation_method": "fixed"
+    }
+  ]
+}
